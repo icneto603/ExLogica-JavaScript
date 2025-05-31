@@ -2,16 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ex. 43</title>
 </head>
 <body>
     <h1>Calcular Desconto</h1>
 
-    <input type="number" name="valorCompra"placeholder="Insira o valor da compra">
+    <input type="number" name="valorCompra" placeholder="Insira o valor da compra">
     <input type="number" name="valorDesconto" placeholder="Insira o valor do desconto">
     <button type="button">Calcular</button>
+    <br />
+    <div class="resultado">
+        
+    </div>
 
-    <span class="resultado">Resultado</span>
+    <script>
+        // Obter os elementos
+        const inputValorCompra = document.querySelector('input[name="valorCompra"]');
+        const inputValorDesconto = document.querySelector('input[name="valorDesconto"]');
+        const btnCalcular = document.querySelector('button');
+        const divResultado = document.querySelector('.resultado');
+       
+        btnCalcular.addEventListener('click', () =>{
+
+            const valorCompra = parseFloat(inputValorCompra.value);
+            const valorDesconto = parseFloat(inputValorDesconto.value);
+            
+            const calcDesconto = valorCompra * valorDesconto/100;
+            const pagtoVista = valorCompra - calcDesconto;
+           
+            divResultado.innerHTML = `
+            <p>Valor da Compra: R$ ${valorCompra.toFixed(2)}</p>
+            <p>Desonto aplicado: ${valorDesconto}%</p>
+            <p>Valor do Desconto R$ ${calcDesconto.toFixed(2)}</p>
+            <p>Pagamento à Vista: R$ ${pagtoVista.toFixed(2)}</p>
+            `;
+
+        });
+        
+
+
+    </script>
 </body>
 </html>
+
